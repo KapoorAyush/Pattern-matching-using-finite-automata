@@ -36,7 +36,7 @@ class NameForm extends React.Component {
       //  console.log("**" + msg.locations[0])
       //var mt=String(msg.modifiedtxt);
       //points=mt.split(',');
-      if((String(msg.locations).split(',')).length>1){
+      if((String(msg.locations).split(',')).length>=1){
         ans='Pattern Found at : '
       }
       else{
@@ -80,7 +80,7 @@ class NameForm extends React.Component {
     return (
       <div>
       <form onSubmit={this.handleSubmit} className="form">
-        <textarea rows="10" cols="100" className="textInput" placeholder="Copy and paste a news article here..." value={this.state.text} onChange={this.handleChange} />  
+        <textarea rows="10" cols="100" className="textInput" placeholder="Enter or copy some text here..." value={this.state.text} onChange={this.handleChange} />  
         <br/>
         <input type="text" value={this.state.pattern} onChange={this.handleChangepat}/>
         <input type="submit" value="Find" className="btn btn-outline-dark" id="submitButton"/>
