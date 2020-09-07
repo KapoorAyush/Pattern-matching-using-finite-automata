@@ -1,5 +1,5 @@
 
-var points=[]
+var ans=''
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
@@ -33,9 +33,15 @@ class NameForm extends React.Component {
       
     xhr.onload = function () {
       var msg = JSON.parse(this.response)
-       console.log("**" + msg.locations[0])
+      //  console.log("**" + msg.locations[0])
       //var mt=String(msg.modifiedtxt);
       //points=mt.split(',');
+      if((String(msg.locations).split(',')).length>1){
+        ans='Pattern Found at : '
+      }
+      else{
+        ans='Pattern not found'
+      }
       z.setState({locations:`${msg.locations}`})
     };
 
@@ -77,8 +83,8 @@ class NameForm extends React.Component {
         <textarea rows="10" cols="100" className="textInput" placeholder="Copy and paste a news article here..." value={this.state.text} onChange={this.handleChange} />  
         <br/>
         <input type="text" value={this.state.pattern} onChange={this.handleChangepat}/>
-        <input type="submit" value="Generate Summary" className="btn btn-outline-dark" id="submitButton"/>
-        <p id="head">{this.state.locations}</p>
+        <input type="submit" value="Find" className="btn btn-outline-dark" id="submitButton"/>
+        <p id="head">{ans+this.state.locations}</p>
         {/* <ul id="points">
           {points.map(points => <li>{points}</li>)}
         </ul> */}
