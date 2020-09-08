@@ -64,8 +64,6 @@ def search(pat, txt):
     # Process txt over FA. 
     state = 0
     for i in range(N):
-        if(ord(txt[i])>255):
-            continue
         state = TF[state][ord(txt[i])]
         if state == M:
             print("Pattern found at index: {}". format(i - M + 1))
@@ -118,7 +116,5 @@ def replace():
     return jsonify(response)
 
 if __name__ == '__main__':
-    import webbrowser
-    # webbrowser.open('http://127.0.0.1:5000/')
     app.run(host= '0.0.0.0',debug=True)
     
