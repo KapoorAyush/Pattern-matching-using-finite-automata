@@ -3,7 +3,7 @@ from flask import send_from_directory
 
 import uuid
 
-NO_OF_CHARS = 10240
+NO_OF_CHARS = 256
 
 
 def getNextState(pat, M, state, x):
@@ -64,6 +64,8 @@ def search(pat, txt):
     # Process txt over FA. 
     state = 0
     for i in range(N):
+        if(ord(txt[i])>255):
+            continue
         state = TF[state][ord(txt[i])]
         if state == M:
             print("Pattern found at index: {}". format(i - M + 1))

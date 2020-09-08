@@ -13,7 +13,7 @@ class NameForm extends React.Component {
   }
   
   handleChange(event) {
-    this.setState({ text: event.target.value.replace(/(\r\n|\n|\r)/gm," ") });
+    this.setState({ text: (event.target.value.replace(/(\r\n|\n|\r)/gm," ")).replace(/[^\x00-\x7F]/g, "") });
     // this.setState({text: event.target.value,summary:'',points:''});
   }
   handleChangepat(event){
@@ -93,7 +93,7 @@ class NameForm extends React.Component {
       <input type="text" value={this.state.rword} className="inp" placeholder="Enter the Pattern/String to replace with" onChange={this.handleChangerword}/>
       <input type="submit" value="Replace" className="btn btn-outline-dark" id="submitButton"/>
       <h2 id="hid">Modified Text</h2>
-      <p >{this.state.modifiedtxt}</p>
+      <p id="mod">{this.state.modifiedtxt}</p>
       {/* <ul id="points">
         {points.map(points => <li>{points}</li>)}
       </ul> */}
