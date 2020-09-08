@@ -37,7 +37,7 @@ class NameForm extends React.Component {
       //var mt=String(msg.modifiedtxt);
       //points=mt.split(',');
       if((String(msg.locations).split(','))[0]!=''){
-        ans='Pattern Found at : '
+        ans='Pattern Found at index : '
       }
       else{
         ans='Pattern not found!!'
