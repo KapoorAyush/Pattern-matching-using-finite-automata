@@ -36,11 +36,11 @@ class NameForm extends React.Component {
       //  console.log("**" + msg.locations[0])
       //var mt=String(msg.modifiedtxt);
       //points=mt.split(',');
-      if((String(msg.locations).split(',')).length>=1){
+      if((String(msg.locations).split(','))[0]!=''){
         ans='Pattern Found at : '
       }
       else{
-        ans='Pattern not found'
+        ans='Pattern not found!!'
       }
       z.setState({locations:`${msg.locations}`})
     };
@@ -71,7 +71,7 @@ class NameForm extends React.Component {
 
     xhr.send(txt);
     console.log(z.state)
-  
+    document.getElementById("hid").style.display="block";
     event.preventDefault();
 
   }
@@ -82,7 +82,7 @@ class NameForm extends React.Component {
       <form onSubmit={this.handleSubmit} className="form">
         <textarea rows="10" cols="100" className="textInput" placeholder="Enter or copy some text here..." value={this.state.text} onChange={this.handleChange} />  
         <br/>
-        <input type="text" value={this.state.pattern} onChange={this.handleChangepat}/>
+        <input type="text" value={this.state.pattern} className="inp" placeholder="Enter a Pattern/String to find" onChange={this.handleChangepat}/>
         <input type="submit" value="Find" className="btn btn-outline-dark" id="submitButton"/>
         <p id="head">{ans+this.state.locations}</p>
         {/* <ul id="points">
@@ -90,9 +90,10 @@ class NameForm extends React.Component {
         </ul> */}
       </form>
       <form onSubmit={this.handleSubmit2} className="form" id="sec" >
-      <input type="text" value={this.state.rword} onChange={this.handleChangerword}/>
+      <input type="text" value={this.state.rword} className="inp" placeholder="Enter the Pattern/String to replace with" onChange={this.handleChangerword}/>
       <input type="submit" value="Replace" className="btn btn-outline-dark" id="submitButton"/>
-      <p id="head">{this.state.modifiedtxt}</p>
+      <h2 id="hid">Modified Text</h2>
+      <p >{this.state.modifiedtxt}</p>
       {/* <ul id="points">
         {points.map(points => <li>{points}</li>)}
       </ul> */}
