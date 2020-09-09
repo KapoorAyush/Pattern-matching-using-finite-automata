@@ -13,7 +13,7 @@ class NameForm extends React.Component {
   }
   
   handleChange(event) {
-    this.setState({ text: (event.target.value.replace(/(\r\n|\n|\r)/gm," ")).replace(/[^\x00-\x7F]/g, "") });
+    this.setState({ text: (event.target.value.replace(/(\r\n|\n|\r)/gm," ")).replace(/[^\x00-\x7F]/g, "").replace(/["]/g, "") });
     // this.setState({text: event.target.value,summary:'',points:''});
   }
   handleChangepat(event){
@@ -25,7 +25,6 @@ class NameForm extends React.Component {
   handleSubmit(event) {
    
     var txt="{\"text\":\""+ this.state.text +"\",\"pattern\":\""+ this.state.pattern +"\"}";
-      
     var xhr = new XMLHttpRequest();
     var z = this;
       
