@@ -35,7 +35,11 @@ class NameForm extends React.Component {
       //  console.log("**" + msg.locations[0])
       //var mt=String(msg.modifiedtxt);
       //points=mt.split(',');
-      if((String(msg.locations).split(','))[0]!=''){
+      if(msg.pattern==''){
+        ans='Please Enter some pattern/string.'
+        msg.locations=''
+      }
+      else if((String(msg.locations).split(','))[0]!=''){
         ans='Pattern Found at index : '
       }
       else{

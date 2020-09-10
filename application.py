@@ -90,7 +90,7 @@ def calc_mpg():
     txt = content['text']
     pat=content['pattern']
     loc=search(pat, txt)
-    response = {"id":str(uuid.uuid4()),"locations":loc,"modifiedtxt":''}
+    response = {"id":str(uuid.uuid4()),"locations":loc,"modifiedtxt":'',"pattern":pat}
     return jsonify(response)
 
 @app.route('/rep', methods=['POST'])
